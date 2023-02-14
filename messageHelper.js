@@ -28,50 +28,51 @@ function getTextMessageInput(recipient, text) {
   }
   
   
-  function getTemplatedMessageInput(recipient, movie, seats) {
+  // function getTemplatedMessageInput(recipient, movie, seats) {
+  function getTemplatedMessageInput(recipient) {
     return JSON.stringify({
       "messaging_product": "whatsapp",
       "to": recipient,
       "type": "template",
       "template": {
-        "name": "sample_movie_ticket_confirmation",
+        "name": "hello_world",
         "language": {
           "code": "en_US"
         },
         "components": [
           {
             "type": "header",
-            "parameters": [
-              {
-                "type": "image",
-                "image": {
-                  "link": movie.thumbnail
-                }
-              }
-            ]
+            // "parameters": [
+            //   {
+            //     "type": "image",
+            //     "image": {
+            //       "link": movie.thumbnail
+            //     }
+            //   }
+            // ]
           },
           {
             "type": "body",
-            "parameters": [
-              {
-                "type": "text",
-                "text": movie.title
-              },
-              {
-                "type": "date_time",
-                "date_time": {
-                  "fallback_value": movie.time
-                }
-              },
-              {
-                "type": "text",
-                "text": movie.venue
-              },
-              {
-                "type": "text",
-                "text": seats
-              }
-            ]
+            // "parameters": [
+            //   {
+            //     "type": "text",
+            //     "text": movie.title
+            //   },
+            //   {
+            //     "type": "date_time",
+            //     "date_time": {
+            //       "fallback_value": movie.time
+            //     }
+            //   },
+            //   {
+            //     "type": "text",
+            //     "text": movie.venue
+            //   },
+            //   {
+            //     "type": "text",
+            //     "text": seats
+            //   }
+            // ]
           }
         ]
       }
