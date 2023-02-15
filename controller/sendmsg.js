@@ -1,3 +1,5 @@
+const ContactModel = require ("../models/number/Contacts");
+
 require('dotenv').config();
 const { sendMessage, getTextMessageInput, getTemplatedMessageInput } = require("../messageHelper");
 
@@ -34,9 +36,9 @@ module.exports = exports = {
     //         res.send(err);
     //         return;
     //     })
-    // }
+    // },
 
-    sendTempMsg: (req, res) => {
+    sendTempMsg: async (req, res) => {
 
         arr = [9979231280, 9898038051]
 
@@ -54,5 +56,17 @@ module.exports = exports = {
                 return;
             })
         });
+    },
+
+    sendMultiContact: async (req , res) => {
+        const contacts = await ContactModel.find();
+
+        contacts.forEach(element => {
+            console.log(element.mo_no);
+        });
+
+        res.send(contacts);
     }
+
+
 }
