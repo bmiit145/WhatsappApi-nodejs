@@ -7,6 +7,6 @@ router.use(bodyParser.json());
 const sendMsgController = require("../controller/sendmsg");
 
 router.get("/send" ,  sendMsgController.sendMsg);
-router.get("/sendtemp" , sendMsgController.sendTempMsg );
+router.get("/sendtmp" , sendMsgController.sendTempMsg );
 
 module.exports = router;

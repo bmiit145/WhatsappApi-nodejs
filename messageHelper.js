@@ -35,9 +35,9 @@ function getTextMessageInput(recipient, text) {
       "to": recipient,
       "type": "template",
       "template": {
-        "name": "hello_world",
+        "name": "sample_msg_1",
         "language": {
-          "code": "en_US"
+          "code": "en"
         },
         "components": [
           {
