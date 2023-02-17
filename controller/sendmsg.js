@@ -40,7 +40,7 @@ module.exports = exports = {
 
     sendTempMsg: async (req, res) => {
 
-        arr = [9979231280, 9898038051]
+        arr = [+919574476496, +919898038051]
 
         arr.forEach(ele => {
             var data = getTemplatedMessageInput(ele);
@@ -63,9 +63,23 @@ module.exports = exports = {
 
         contacts.forEach(element => {
             console.log(element.mo_no);
+
+            var data = getTemplatedMessageInput(element.mo_no);
+            
+            sendMessage(data).then(function (response) {
+                console.log("Successfully template send", element.mo_no);
+                res.send();                         // response  to main func
+                return;
+            }).catch(err => {
+                // console.log("Not send On" , process.env.RECIPIENT_WAID);
+                console.log(err);
+                res.send(err);
+                return;
+            })
+
         });
 
-        res.send(contacts);
+        res.send("Successfully sent ");
     }
 
 

@@ -8,7 +8,7 @@ const ContactSchema = new mongoose.Schema({
     mo_no:{
         type:Number,
         required: true,
-        unique:true
+        // unique:true
     }
 })
 
