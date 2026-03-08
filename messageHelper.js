@@ -28,60 +28,90 @@ function getTextMessageInput(recipient, text) {
   }
   
   
-  // function getTemplatedMessageInput(recipient, movie, seats) {
-  function getTemplatedMessageInput(recipient) {
+function getTemplatedMessageInput(recipient) {
     return JSON.stringify({
       "messaging_product": "whatsapp",
       "to": recipient,
       "type": "template",
       "template": {
-        "name": "sample_msg_1",
+        "name": "project_information_event",
         "language": {
-          "code": "en"
+          "code": "gu"
+        }
+      }
+    });
+  }
+
+/**
+ * Get template message with image header (for Grand Opening event)
+ * @param {string} recipient - Recipient phone number
+ * @param {string} mediaId - WhatsApp media ID for the image
+ * @returns {string} - JSON stringified template message
+ */
+function getImageTemplateInput(recipient, mediaId) {
+    return JSON.stringify({
+      "messaging_product": "whatsapp",
+      "to": recipient,
+      "type": "template",
+      "template": {
+        "name": "project_information_event",
+        "language": {
+          "code": "gu"
         },
         "components": [
           {
             "type": "header",
-            // "parameters": [
-            //   {
-            //     "type": "image",
-            //     "image": {
-            //       "link": movie.thumbnail
-            //     }
-            //   }
-            // ]
-          },
-          {
-            "type": "body",
-            // "parameters": [
-            //   {
-            //     "type": "text",
-            //     "text": movie.title
-            //   },
-            //   {
-            //     "type": "date_time",
-            //     "date_time": {
-            //       "fallback_value": movie.time
-            //     }
-            //   },
-            //   {
-            //     "type": "text",
-            //     "text": movie.venue
-            //   },
-            //   {
-            //     "type": "text",
-            //     "text": seats
-            //   }
-            // ]
+            "parameters": [
+              {
+                "type": "image",
+                "image": {
+                  "id": mediaId
+                }
+              }
+            ]
           }
         ]
       }
-    }
-    );
+    });
+  }
+
+/**
+ * Get template message with image from URL
+ * @param {string} recipient - Recipient phone number
+ * @param {string} imageUrl - URL of the image
+ * @returns {string} - JSON stringified template message
+ */
+function getImageTemplateInputUrl(recipient, imageUrl) {
+    return JSON.stringify({
+      "messaging_product": "whatsapp",
+      "to": recipient,
+      "type": "template",
+      "template": {
+        "name": "project_information_event",
+        "language": {
+          "code": "gu"
+        },
+        "components": [
+          {
+            "type": "header",
+            "parameters": [
+              {
+                "type": "image",
+                "image": {
+                  "link": imageUrl
+                }
+              }
+            ]
+          }
+        ]
+      }
+    });
   }
   
-  module.exports = {
+module.exports = {
     sendMessage: sendMessage,
     getTextMessageInput: getTextMessageInput,
-    getTemplatedMessageInput: getTemplatedMessageInput
-  };
+    getTemplatedMessageInput: getTemplatedMessageInput,
+    getImageTemplateInput: getImageTemplateInput,
+    getImageTemplateInputUrl: getImageTemplateInputUrl
+};
